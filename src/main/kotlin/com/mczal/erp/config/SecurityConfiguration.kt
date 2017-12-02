@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy
+import org.springframework.security.web.session.HttpSessionEventPublisher
 
 @EnableWebSecurity
 @Configuration
@@ -25,7 +26,7 @@ class SecurityConfiguration: WebSecurityConfigurerAdapter() {
 
   @Autowired
   fun configAuhentication(auth: AuthenticationManagerBuilder) {
-    auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder())
   }
 
   @Bean(name = arrayOf("passwordEncoder"))
@@ -39,42 +40,43 @@ class SecurityConfiguration: WebSecurityConfigurerAdapter() {
 
   override fun configure(http: HttpSecurity){
 
-    http.headers().cacheControl().disable()
-    http.headers().frameOptions().disable()
+    http.headers()
+      .cacheControl()
+      .and()
+      .frameOptions().disable()
+
     http.csrf()
+      .and()
+      .formLogin()
+      .loginPage("/login")
+      .usernameParameter("username")
+      .passwordParameter("password").permitAll()
 
       .and()
-        .formLogin()
-        .loginPage("/login")
-        .usernameParameter("username")
-        .passwordParameter("password").permitAll()
+      .logout()
+      .logoutUrl("/logout")
+      .logoutSuccessUrl("/login?logout")
+      .invalidateHttpSession(true)
+      .deleteCookies("JSESSIONID")
+      .permitAll()
 
       .and()
-        .logout()
-        .logoutUrl("/logout")
-        .logoutSuccessUrl("/login?logout")
-        .invalidateHttpSession(true)
-        .deleteCookies("JSESSIONID")
-        .permitAll()
-
-      .and()
-        .sessionManagement()
-        .sessionFixation()
-        .changeSessionId()
-        .maximumSessions(1)
-        .maxSessionsPreventsLogin(true)
-        .sessionRegistry(getSessionRegistry())
+      .sessionManagement()
+      .sessionFixation()
+      .changeSessionId()
+      .maximumSessions(1)
+      .sessionRegistry(getSessionRegistry())
 
       .and()
 
       .and()
-        .authorizeRequests()
-        .antMatchers("/admin/**")
-        .hasAnyRole("ADMIN")
+      .authorizeRequests()
+      .antMatchers("/admin/**").hasRole("ADMIN")
+      .antMatchers("/profile/**").hasAnyRole("ADMIN", "USER")
 
       .and()
-        .exceptionHandling()
-        .accessDeniedPage("/access_denied")
+      .exceptionHandling()
+      .accessDeniedPage("/access_denied")
 
   }
 
@@ -86,6 +88,11 @@ class SecurityConfiguration: WebSecurityConfigurerAdapter() {
   @Bean
   fun getSessionRegistry(): SessionRegistry{
     return SessionRegistryImpl()
+  }
+
+  @Bean
+  fun httpSessionEventPublisher(): HttpSessionEventPublisher{
+    return HttpSessionEventPublisher()
   }
 
 }
