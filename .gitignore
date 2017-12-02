@@ -1,6 +1,8 @@
 logs/
 .DS_Store
 
+bootstrap-config.properties
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
