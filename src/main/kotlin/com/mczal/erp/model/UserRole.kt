@@ -1,5 +1,6 @@
 package com.mczal.erp.model
 
+import com.jawacorp.common.base.McBaseEntity
 import javax.persistence.Entity
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
@@ -17,4 +18,4 @@ data class UserRole(
   @JoinColumn(name = "roleId")
   var role: Role? = null
 
-)
+): McBaseEntity()

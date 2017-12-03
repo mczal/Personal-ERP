@@ -35,6 +35,11 @@ data class User(
   @Column
   var accountNonLocked: Boolean = true,
 
+  @OneToMany(
+    cascade = arrayOf(CascadeType.ALL),
+    fetch = FetchType.LAZY,
+    mappedBy = "user"
+  )
   var roles: MutableList<UserRole> = ArrayList()
 
 ): McBaseEntity()

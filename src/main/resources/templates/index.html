@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Personal ERP - Mczal</title>
+
+  <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+        <!--rel="stylesheet" media="screen"/>-->
+
+  <style>
+
+  </style>
+
+</head>
+<body>
+<div class="container">
+
+  <header class="component__header">
+    This is top bar
+    <form th:action="@{/logout}" method="post">
+
+      <button type="submit" class="btn btn-primary">LOGOUT</button>
+
+    </form>
+  </header>
+
+  <div class="compnoent__left-bar">
+    This is left bar
+  </div>
+
+  <div class="component__right-bar">
+    This is right bar
+  </div>
+
+  <div class="component__content">
+    This is content
+  </div>
+
+  <footer class="component__footer">
+    This is footer
+  </footer>
+
+</div>
+</body>
+</html>

@@ -20,11 +20,13 @@ class UserServiceImpl: UserService {
   @Autowired
   private lateinit var passwordEncoder: PasswordEncoder
 
+  @Transactional(readOnly = false)
   override fun save(user: User): User {
     user.encryptedPassword = passwordEncoder.encode(user.password)
     return userDaoJPA.save(user)
   }
 
+  @Transactional(readOnly = false)
   override fun update(user: User): User {
     return userDaoJPA.save(user)
   }

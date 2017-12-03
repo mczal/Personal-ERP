@@ -49,7 +49,7 @@ class SecurityConfiguration: WebSecurityConfigurerAdapter() {
       .and()
       .formLogin()
       .loginPage("/login")
-      .usernameParameter("username")
+      .usernameParameter("email")
       .passwordParameter("password").permitAll()
 
       .and()
