@@ -26,6 +26,8 @@
 
 		<jawacorp-common-base.version>0.0.1</jawacorp-common-base.version>
 		<kotlin.version>1.1.51</kotlin.version>
+
+		<wro4j-maven-plugin.version>1.8.0</wro4j-maven-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -137,6 +139,26 @@
 						<version>${kotlin.version}</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>ro.isdc.wro4j</groupId>
+				<artifactId>wro4j-maven-plugin</artifactId>
+				<version>${wro4j-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<phase>generate-resources</phase>
+					</execution>
+				</executions>
+
+				<configuration>
+					<wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
+					<wroFile>${basedir}/src/main/resources/wro.xml</wroFile>
+					<extraConfigFile>${basedir}/src/main/resources/wro.properties</extraConfigFile>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
