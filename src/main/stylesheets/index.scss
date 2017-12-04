@@ -1,0 +1,27 @@
+.container{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.component{
+
+  &__header{
+    color: aliceblue;
+  }
+
+  &__left-bar{
+    color: azure;
+  }
+
+  &__right-bar{
+    color: cadetblue;
+  }
+
+  &__content{
+    color: chocolate;
+  }
+
+  &__footer{
+    color: crimson;
+  }
+
+}

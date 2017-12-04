@@ -3,6 +3,8 @@ logs/
 
 bootstrap-config.properties
 
+static/
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 

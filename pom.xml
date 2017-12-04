@@ -27,7 +27,7 @@
 		<jawacorp-common-base.version>0.0.1</jawacorp-common-base.version>
 		<kotlin.version>1.1.51</kotlin.version>
 
-		<wro4j-maven-plugin.version>1.8.0</wro4j-maven-plugin.version>
+    <libsass-maven-plugin.version>0.2.8-libsass_3.4.4</libsass-maven-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -69,10 +69,10 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-devtools</artifactId>-->
+		<!--</dependency>-->
 
 		<!-- KOTLIN -->
 		<dependency>
@@ -124,6 +124,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
 			<plugin>
 				<artifactId>kotlin-maven-plugin</artifactId>
 				<groupId>org.jetbrains.kotlin</groupId>
@@ -139,6 +140,25 @@
 						<version>${kotlin.version}</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>com.github.warmuuh</groupId>
+				<artifactId>libsass-maven-plugin</artifactId>
+				<version>${libsass-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<inputPath>${basedir}/src/main/stylesheets/</inputPath>
+					<outputPath>${basedir}/src/main/resources/static/css/</outputPath>
+          <omitSourceMapingURL>true</omitSourceMapingURL>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
