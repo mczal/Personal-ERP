@@ -155,8 +155,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<inputPath>${basedir}/src/main/stylesheets/</inputPath>
-					<outputPath>${basedir}/src/main/resources/static/css/</outputPath>
+					<inputPath>${basedir}/stylesheets/</inputPath>
+					<outputPath>${basedir}/src/main/resources/static/stylesheets/</outputPath>
           <omitSourceMapingURL>true</omitSourceMapingURL>
 				</configuration>
 			</plugin>

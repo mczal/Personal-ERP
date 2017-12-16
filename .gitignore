@@ -3,6 +3,11 @@ logs/
 
 bootstrap-config.properties
 
+### Node
+node_modules/
+npm-debug.log
+
+### Generated Sources
 static/
 
 target/
