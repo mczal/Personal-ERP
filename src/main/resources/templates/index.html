@@ -2,38 +2,38 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+
   <title>Personal ERP - Mczal</title>
 
-  <link th:href="@{/css/index.css}" rel="stylesheet"/>
+  <link th:href="@{/stylesheets/index.css}" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 </head>
 <body>
 <div class="container">
 
-  <header class="component__header">
-    This is top bar
-    <form th:action="@{/logout}" method="post">
+  <header class="base__header">
+    <div class="base__header__dropdown-list">
+      <div class="glyphicon glyphicon-th-list"></div>
+    </div>
 
-      <button type="submit" class="btn btn-primary">LOGOUT</button>
+    <div class="base__header__profile-icon">
+      <div class="glyphicon glyphicon-user"></div>
+    </div>
 
-    </form>
+    <!--<form th:action="@{/logout}" method="post">-->
+      <!--<button type="submit" class="btn btn-primary">LOGOUT</button>-->
+    <!--</form>-->
   </header>
 
-  <div class="compnoent__left-bar">
-    This is left bar
-  </div>
-
-  <div class="component__right-bar">
-    This is right bar
-  </div>
-
-  <div class="component__content">
+  <div class="base__content">
     This is content
   </div>
 
-  <footer class="component__footer">
-    This is footer
-  </footer>
+  <!--<footer class="base__footer">-->
+    <!--This is footer-->
+  <!--</footer>-->
 
 </div>
 </body>

@@ -1,27 +1,46 @@
-.container{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+body{
+  margin: 0;
 }
 
-.component{
+.container{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.base{
 
   &__header{
-    color: aliceblue;
-  }
+    position: fixed;
+    width: 100%;
+    background-color: #f2f2f2;
 
-  &__left-bar{
-    color: azure;
-  }
+    &__dropdown-list{
+      display: inline-block;
+      padding: 15px;
+      font-size: 23px;
+    }
 
-  &__right-bar{
-    color: cadetblue;
+    &__profile-icon{
+      display: inline-block;
+      position: absolute;
+      left: 47%;
+      font-size: 23px;
+      padding: 15px;
+    }
   }
 
   &__content{
     color: chocolate;
+    padding-top: 80px;
   }
 
   &__footer{
     color: crimson;
   }
 
+}
+
+.hidden{
+  display: none;
 }
